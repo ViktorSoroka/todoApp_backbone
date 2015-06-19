@@ -1,4 +1,4 @@
-define('views/todo_view', ['backbone'], function (Backbone) {
+define('views/todo_view', ['backbone', 'jquery'], function (Backbone) {
     //TodoView
     return Backbone.View.extend({
         template: _.template('<h3 class="<%= status %>"><input type=checkbox <%= status == "complete" ? "checked=checked" : "" %>/> <%= description %> <a href="/#todos/<%= id %>">?</a></h3>'),
