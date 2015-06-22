@@ -1,4 +1,4 @@
-define('views/todos_view', ['backbone', 'views/todo_view', 'jquery'], function (Backbone, TodoView) {
+define('views/todos_view', ['backbone', 'views/todo_view'], function (Backbone, TodoView) {
     //TodosView
     return Backbone.View.extend({
         initialize: function () {

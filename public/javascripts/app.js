@@ -1,9 +1,10 @@
 require.config({
     baseUrl: '/javascripts',
     paths: {
-        'jquery': 'libs/jquery-min',
-        'backbone': 'libs/backbone-min',
-        'underscore': 'libs/underscore-min'
+        jquery: 'libs/jquery-min',
+        backbone: 'libs/backbone-min',
+        underscore: 'libs/underscore-min',
+        text: 'libs/text'
     },
     shim: {
         'jquery': {
@@ -11,6 +12,9 @@ require.config({
         },
         'backbone': {
             deps: ['underscore', 'jquery']
+        },
+        bootstrap: {
+            deps: ['jquery']
         }
     }
 });

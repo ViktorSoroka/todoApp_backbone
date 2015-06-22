@@ -1,4 +1,4 @@
-define('models/todo_item', ['backbone', 'jquery'], function (Backbone) {
+define('models/todo_item', ['backbone'], function (Backbone) {
     //TodoItem
     return Backbone.Model.extend({
         toggleStatus: function () {

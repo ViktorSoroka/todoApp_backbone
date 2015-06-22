@@ -1,10 +1,10 @@
-define('views/todo_view', ['backbone', 'jquery'], function (Backbone) {
-    //TodoView
+define('views/todo_view', ['backbone', 'text!templates/todo.tpl'], function (Backbone, Todo) {
     return Backbone.View.extend({
-        template: _.template('<h3 class="<%= status %>"><input type=checkbox <%= status == "complete" ? "checked=checked" : "" %>/> <%= description %> <a href="/#todos/<%= id %>">?</a></h3>'),
+        template: _.template(Todo),
 
         events: {
-            'change input': 'toggleStatus'
+            'change input': 'toggleStatus',
+            'click span': 'deleteTodo'
         },
 
         initialize: function () {
@@ -21,8 +21,13 @@ define('views/todo_view', ['backbone', 'jquery'], function (Backbone) {
             this.$el.remove();
         },
 
+        deleteTodo: function () {
+            this.model.destroy();
+            this.remove();
+        },
+
         toggleStatus: function () {
-            this.model.toggleStatus()
+            this.model.toggleStatus();
         }
     });
 });

@@ -10,6 +10,8 @@ define('collections/todo_items', ['backbone', 'models/todo_item'], function (Bac
 
         hideModel: function (model) {
             model.trigger('hide');
+            console.log(model);
+            //model.destroy();
         },
 
         focusOnTodoItem: function (id) {
