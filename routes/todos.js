@@ -7,10 +7,12 @@ var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function callback() {
     console.log("Connected!");
+    //var newUser = new userModel({status: 'complete', description: 'aaaaaaaaaa'});
+    //newUser.save();
 });
 
-mongoose.connect('mongodb://localhost:27017');
-
+//mongoose.connect('mongodb://localhost:27017');
+mongoose.connect('mongodb://todo_user:qwerty@ds027698.mongolab.com:27698/todos');
 //* GET users listing. */
 
 router.route('/')

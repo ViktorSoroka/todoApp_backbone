@@ -1,6 +1,7 @@
 define('views/todos_view', ['backbone', 'views/todo_view'], function (Backbone, TodoView) {
     //TodosView
     return Backbone.View.extend({
+        tagName: 'tbody',
         initialize: function () {
             this.collection.on('add', this.addOne, this);
             this.collection.on('reset', this.addAll, this);

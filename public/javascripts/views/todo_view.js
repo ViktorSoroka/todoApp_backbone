@@ -1,5 +1,6 @@
 define('views/todo_view', ['backbone', 'text!templates/todo.tpl'], function (Backbone, Todo) {
     return Backbone.View.extend({
+        tagName: 'tr',
         template: _.template(Todo),
 
         events: {
@@ -23,7 +24,6 @@ define('views/todo_view', ['backbone', 'text!templates/todo.tpl'], function (Bac
 
         deleteTodo: function () {
             this.model.destroy();
-            this.remove();
         },
 
         toggleStatus: function () {

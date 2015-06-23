@@ -1,5 +1,4 @@
-<h3 class="<%= status %>">
-    <input type=checkbox <%= status == "complete" ? "checked=checked" : "" %>/> <%= description %>
-    <a href="/#todos/<%= id %>">?</a>
-    <span glyphicon glyphicon-align-left" aria-hidden="true" data-delete="<%= id %>"></span>
-</h3>
+<td><input type=checkbox <%= status == "complete" ? "checked=checked" : "" %>/></td>
+<td class="<%= status %>"><%= description %></td>
+<td><a href="/#todos/<%= id %>">?</a></td>
+<td><span class="glyphicon glyphicon-search" aria-hidden="true" data-delete="<%= id %>"></span></td>
