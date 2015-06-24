@@ -4,7 +4,7 @@ define('views/todo_view', ['backbone', 'text!templates/todo.tpl'], function (Bac
         template: _.template(Todo),
 
         events: {
-            'change input': 'toggleStatus',
+            'change input[type="checkbox"]': 'toggleStatus',
             'click span': 'deleteTodo'
         },
 
@@ -28,6 +28,7 @@ define('views/todo_view', ['backbone', 'text!templates/todo.tpl'], function (Bac
 
         toggleStatus: function () {
             this.model.toggleStatus();
+            this.model.save();
         }
     });
 });

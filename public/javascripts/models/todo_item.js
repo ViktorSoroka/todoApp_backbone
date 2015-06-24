@@ -7,8 +7,6 @@ define('models/todo_item', ['backbone'], function (Backbone) {
             } else {
                 this.set({'status': 'incomplete'});
             }
-
-            this.save();
         }
     });
 });

@@ -7,14 +7,16 @@ define('router', ['backbone', 'collections/todo_items', 'views/todos_view'], fun
         },
 
         initialize: function () {
-            this.todoItems = new TodoItems();
-            this.todosView = new TodosView({collection: this.todoItems});
-            this.todosView.render();
+            var todoItems = new TodoItems();
+            var todosView = new TodosView({collection: todoItems});
+            todosView.render();
         },
 
         index: function () {
-            $('#app').html(this.todosView.el);
-            this.todoItems.fetch();
+            var todoItems = new TodoItems();
+            var todosView = new TodosView({collection: todoItems, el: $('#app')});
+            todosView.render();
+            todoItems.fetch();
         },
 
         start: function () {
@@ -22,7 +24,13 @@ define('router', ['backbone', 'collections/todo_items', 'views/todos_view'], fun
         },
 
         show: function (id) {
-            this.todoItems.focusOnTodoItem(id);
+            $('#app').empty();
+            var todoItems = new TodoItems();
+            todoItems.add({id: id});
+            todoItems.fetch();
+            var todosView = new TodosView({collection: todoItems});
+            //todosView.render();
+            console.log(todoItems);
         }
 
     }));
