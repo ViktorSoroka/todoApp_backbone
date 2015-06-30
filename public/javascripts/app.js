@@ -4,7 +4,8 @@ require.config({
         jquery: 'libs/jquery-min',
         backbone: 'libs/backbone-min',
         underscore: 'libs/underscore-min',
-        text: 'libs/text'
+        text: 'libs/text',
+        bootstrap: 'libs/bootstrap'
     },
     shim: {
         'jquery': {
@@ -12,9 +13,6 @@ require.config({
         },
         'backbone': {
             deps: ['underscore', 'jquery']
-        },
-        bootstrap: {
-            deps: ['jquery']
         }
     }
 });

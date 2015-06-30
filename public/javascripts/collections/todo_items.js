@@ -3,13 +3,13 @@ define('collections/todo_items', ['backbone', 'models/todo_item'], function (Bac
     return Backbone.Collection.extend({
         model: TodoItem,
         url: '/todos',
-
+        //parse: function(response, options) {
+        //    if (options.id) {
+        //        return _.where(response, {id: options.id});
+        //    }
+        //    return response;
+        //},
         initialize: function () {
-            this.on('remove', this.hideModel, this);
-        },
-
-        hideModel: function (model) {
-            model.trigger('hide');
         },
 
         focusOnTodoItem: function (id) {

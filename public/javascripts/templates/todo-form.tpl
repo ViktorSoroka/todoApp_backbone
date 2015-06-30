@@ -9,11 +9,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <input type="text" id="description" name="firstName" class="form-control" value="<%= todo.description %>">
+                        <input type="text" id="description" name="description" class="form-control" value="<%= description %>">
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>
-                        <input type="text" id="status" name="status" class="form-control" value="<%= todo.status %>">
+                        <input type="text" id="status" name="status" class="form-control" value="<%= status %>">
                     </div>
                 </div>
                 <div class="modal-footer">
