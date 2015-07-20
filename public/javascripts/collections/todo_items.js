@@ -2,22 +2,17 @@ define('collections/todo_items', ['backbone', 'models/todo_item'], function (Bac
     //TodoItems
     return Backbone.Collection.extend({
         model: TodoItem,
+        urlRoot: '/todos',
         url: '/todos',
-        //parse: function(response, options) {
-        //    if (options.id) {
-        //        return _.where(response, {id: options.id});
-        //    }
-        //    return response;
-        //},
-        initialize: function () {
+        parse: function(response, options) {
+            if (response.collection) {
+                this.total = response.total;
+                this.offset = response.offset;
+                return response.collection;
+            }
+            return response;
         },
-
-        focusOnTodoItem: function (id) {
-            var modelsToRemove = this.filter(function (todoItem) {
-                return todoItem.id != id;
-            });
-
-            this.remove(modelsToRemove);
+        initialize: function () {
         }
     });
 });

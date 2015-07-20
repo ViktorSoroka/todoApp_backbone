@@ -97,4 +97,11 @@ td a:focus {
   text-decoration: line-through; }
 
 .complete a {
-  color: #bbb; }
+  color: #bbb;
+}
+div.next-page {
+  font-size: 20px;
+  background-color: #fff;
+  float: left;
+  margin-top: 1px;
+}

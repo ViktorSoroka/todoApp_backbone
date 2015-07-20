@@ -1,4 +1,5 @@
 define('views/todo_view', ['backbone', 'views/todo-form', 'text!templates/todo.tpl'], function (Backbone, Todo_form, Todo) {
+
     return Backbone.View.extend({
         tagName: 'tr',
         template: _.template(Todo),

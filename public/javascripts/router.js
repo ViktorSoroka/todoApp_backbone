@@ -1,8 +1,14 @@
 define('router', ['backbone', 'collections/todo_items', 'views/todos_view'], function (Backbone, TodoItems, TodosView) {
-    //TodoAp
+
+    var requestConfig = {
+            perPage: 5,
+            offset: 1
+        };
+
     return new (Backbone.Router.extend({
         routes: {
             "": "index",
+            "todos/page/:offset": "page",
             "todos/:id": "show"
         },
 
@@ -15,8 +21,11 @@ define('router', ['backbone', 'collections/todo_items', 'views/todos_view'], fun
 
         index: function () {
             var todoItems = new TodoItems();
-            new TodosView({collection: todoItems, el: $('#app')});
-            todoItems.fetch({reset: true});
+            new TodosView({collection: todoItems, nextPage: true});
+            todoItems.fetch({
+                reset: true,
+                data: requestConfig
+            });
         },
 
         start: function () {
@@ -25,14 +34,31 @@ define('router', ['backbone', 'collections/todo_items', 'views/todos_view'], fun
 
         show: function (id) {
             $('#app').empty();
+
             var todoItems = new TodoItems();
             todoItems.url += '/' + id;
             todoItems.fetch({
                 reset: true,
-                processData: true
+                processData: true,
+                data: requestConfig
             });
-            new TodosView({collection: todoItems, el: $('#app')});
-        }
+            new TodosView({collection: todoItems, nextPage: false});
+        },
 
+        page: function (page) {
+            var todoItems = new TodoItems();
+            todoItems.url += '/page/' + page;
+            var todosView = new TodosView({collection: todoItems, nextPage: true});
+            todoItems.fetch({
+                reset: true,
+                processData: true,
+                data: {offset: +page, perPage: requestConfig.perPage},
+                success: function (collection) {
+                    if (collection.length < requestConfig.perPage) {
+                        todosView.$("#next-page").detach().remove();
+                    }
+                }
+            });
+        }
     }));
 });
